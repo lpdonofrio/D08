@@ -10,7 +10,12 @@
 
 # Body
 def store_to_dict():
-    pass
+    words_dictionary = {}
+    with open("words.txt", "r") as words_file:
+        for line in words_file:
+            clean_word = line.split()[0]
+            words_dictionary[clean_word] = 0
+    return words_dictionary
 
 
 ###############################################################################
