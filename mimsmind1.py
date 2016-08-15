@@ -15,7 +15,6 @@ def generate_random():
     for n in range(0, int(x)):
         random_number = str(random.randint(0, 9))
         random_concat = random_concat + random_number
-    print(random_concat)
     return random_concat, x, max_round
 
 def guess_number():

@@ -31,20 +31,16 @@ def invert_dict_new(d):
     inverse = dict()
     for key in d:
         val = d[key]
-        inverse[val].append(key)
+        if val not in inverse:
+            inverse[val] = [key]
+        else:
+            inverse[val].append(key)
     return inverse
-
+#I don't know how to make it more concise
 
 def print_hist_newest(d):
-    key_1 = 0
-    for key in sorted(d):
-        if key == key_1:
-            key_1 = key_1 + 1
-        else:
-            d[key_1] = ""
-            key_1 = key_1 + 1
-    print(d)
-
+    for key in range(0, max(d)):
+        print(key, sorted(d.get(key, [])))
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
@@ -84,8 +80,7 @@ def get_pledge_list():
 def main():  # DO NOT CHANGE BELOW
     pledge_histogram = histogram_new(get_pledge_list())
     pledge_invert = invert_dict_new(pledge_histogram)
-    print("I can't get print_hist_newest to work")
-    #print_hist_newest(pledge_invert)
+    print_hist_newest(pledge_invert)
 
 if __name__ == '__main__':
     main()
